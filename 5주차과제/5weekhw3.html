@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키 이벤트 응용</title>
+    <style>
+        td{
+            width: 50px;
+            height: 50px;
+            border: 1px solid orchid;
+        }
+    </style>
+</head>
+<body>
+    <h3>사진 도망다니기</h3>
+    <hr>
+    <script>
+        let fRow = 10;
+        let fCol = 10;
+        document.write("<table>");
+        for(let i = 0;i<fRow;i++){
+            document.write("<tr>");
+            for(let j = 0; j < fCol;j++){
+                document.write("<td></td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+        let tds;
+        let prevIndex = 0, index = 0;
+        window.onload = function(){
+            img = document.createElement("img");
+            img.setAttribute("src","https://png.pngtree.com/element_our/20190601/ourmid/pngtree-cute-cartoon-style-green-tree-vector-transparent-png-image_1327682.jpg");
+            img.width = 45;
+            img.height = 45;
+            img.onclick = function(){
+                index = Math.floor(Math.random()*24);
+                tds[index].appendChild(img);
+                tds[prevIndex].innerHTML = "";
+                prevIndex = index;
+            }
+            tds = document.getElementsByTagName("td");
+            tds[index].appendChild(img);
+        }
+    </script>
+</body>
+</html>

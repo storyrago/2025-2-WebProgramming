@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" style="background-color:aliceblue" width="500" height="300"></canvas>
+    <script>
+        let canvas = document.getElementById("myCanvas");
+        let context = canvas.getContext("2d");
+        let x = 0;
+        let y = 100;
+        context.beginPath();
+        context.strokeStyle="blue";
+        context.arc(x,y,30,0,2*Math.PI);
+        context.stroke();
+        document.addEventListener("keydown",movingCircle);
+        function movingCircle(e){
+            if(x < 0) x = 500;
+            else if(x > 500) x = 0;
+            else if(y < 0) y = 300;
+            else if(y > 300) y = 0;
+            if(e.key == "ArrowRight"){
+                context.clearRect(0,0,canvas.width,canvas.height);
+                x += 10;
+                context.beginPath();
+                context.strokeStyle="blue";
+                context.arc(x,y,30,0,2*Math.PI);
+                context.stroke();
+            }
+            else if(e.key == "ArrowLeft"){
+                context.clearRect(0,0,canvas.width,canvas.height);
+                x -= 10;
+                context.beginPath();
+                context.strokeStyle="blue";
+                context.arc(x,y,30,0,2*Math.PI);
+                context.stroke();
+            }
+            else if(e.key == "ArrowDown"){
+                context.clearRect(0,0,canvas.width,canvas.height);
+                y += 10;
+                context.beginPath();
+                context.strokeStyle="blue";
+                context.arc(x,y,30,0,2*Math.PI);
+                context.stroke();
+            }
+            else if(e.key == "ArrowUp"){
+                context.clearRect(0,0,canvas.width,canvas.height);
+                y -= 10;
+                context.beginPath();
+                context.strokeStyle="blue";
+                context.arc(x,y,30,0,2*Math.PI);
+                context.stroke();
+            }
+        }
+        
+    </script>
+</body>
+</html>

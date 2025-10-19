@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let count = 0;
+        function tClick(){
+            document.getElementById("number").innerHTML = ++count;
+        }
+        function rClick(){
+            count = 0;
+            document.getElementById("number").innerHTML = count;
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <div id="number">0</div>
+        <input type="button" value="count" onclick="tClick()">
+        <input type="button" value="reset" onclick="rClick()">
+    </form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>1단계 계산</h2>
+    <form>
+        <input type="text" id="txt1" size="5">
+        +
+        <input type="text" id="txt2" size="5">
+        <input type="button" value="계산" onclick="add1()">
+    </form>
+    <h2>결과 : <span id="total">0</span></h2>
+    <script>
+        const getId = document.getElementById("total");
+        function add1(){
+            getId.innerHTML = parseInt(txt1.value) + parseInt(txt2.value);
+        }
+    </script>
+</body>
+</html>

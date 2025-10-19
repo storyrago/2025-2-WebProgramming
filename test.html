@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 0문서 구조 시멘틱 태그 사용법</title>
+</head>
+<body>
+    <header>
+        <img src="https://media.istockphoto.com/id/840457388/ko/%EC%82%AC%EC%A7%84/%EB%B9%84%ED%96%89%EA%B8%B0-%ED%9D%B0%EC%83%89-%EB%B0%94%ED%83%95%EC%97%90-%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD.jpg?s=170667a&w=0&k=20&c=GFEj9UuWCb1ospLn8ivvE9SQWJJ7n14finQjMHgDKvo=" style="height: 80px; margin-right: auto; padding-left: 10px;">
+        <a href="#">홈페이지 소개</a>
+        <a href="#">메뉴</a>
+        <a href="#">공지사항</a>   
+        <a href="#">찾아오시는 길</a>
+    </header>
+    <div>
+        <section>
+            <h1 style="padding:10px">제주도 한달 살기</h1>
+            <p style="padding: 10px">
+                저작자-발명가-과학기술자와 예술가의 권리는 법률로써 보호한다. 대통령은 법률에서 구체적으로
+                범위를 정하여 위임받은 사항과 법률을 집행하기 위하여 필요한 사항에 관하여 대통령령을 발할 수
+                있다.<br>
+                .<br>
+                .<br>
+                .<br>
+                .<br>
+                .<br>
+                학교교육 및 평생교육을 포함한 교육제도와 그 운영, 교육재정 및 교원의 지위에 관한 기본적인 사항은 법률로 정한다.
+                국가안전보장회의는 대통령이 주재한다..
+            </p>
+        </section>
+        <aside>
+            <p><img src="https://t4.ftcdn.net/jpg/05/26/12/59/360_F_526125944_Z01KZKcnbOBf4KM4WGXlIb5rW4dK1vOp.jpg" alt="제주도 이미지1"></p>
+            <p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1nhcnGsC4i-b_BtFTt3WxDrG1eE-zIdCGlw&s" alt="제주도 이미지2"></p>
+        </aside>
+    </div>
+    <footer>
+        한성대학교 컴퓨터공학부<br>
+        전화 02-999-1234 이메일 test@hansung.ac.kr
+    </footer>
+</body>
+</html>
+
+<style>
+    html, body {margin: 0; padding: 0; height: 2000px;}
+    header {width: 1000px; height: 100px; background: white; margin: 0 auto;display: flex; justify-content: flex-end; align-items: flex-end; ;}
+    div {width: 1000px; height: 500px; margin: 0 auto; align-content: center;}
+    section {width: 700px; height: 100%; float: left; background-color: olivedrab;}
+    aside {width: 300px; height: 100%; float: left; background-color: orange;}
+    footer {width: 1000px; height: 100px; clear: both; background-color: plum;
+            margin: 0 auto; display: flex; justify-content: center; align-items: center;}
+    a{margin: 5px;}
+    img{width: 250px; height: 150px; padding:25px;}
+</style>

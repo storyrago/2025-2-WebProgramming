@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>나의 단어장 만들기</h1>
+    <hr>
+    <p>영단어 <input id="Eword" type="text"></p>
+    <p>단어뜻 <input id="Emean" type="text"></p>
+    <button type="button" id="save" onclick="store()">단어 저장</button>
+    <button type="button" id="search" onclick="search()">단어 검색</button>
+    <button type="button" id="delete" onclick="deleteWord()">단어 삭제</button>
+    <button type="button" id="lookAll" onclick="lookAll()">전체보기</button>
+    <script>
+        
+    </script>
+    <script>
+        let word = document.getElementById("Eword");
+        let mean = document.getElementById("Emean");
+        function store(){
+            if(!window.localStorage){
+                alert("로컬 스토리지를 지원하지 않습니다.");
+                return;
+            }
+            localStorage.setItem(word.value,mean.value);
+        }
+        function search(){
+            if(!window.localStorage){
+                alert("로컬 스토리지를 지원하지 않습니다.");
+                return;
+            }
+            let savedMean = localStorage.getItem(word.value);
+            if(savedMean == null){
+                alert("해당 단어는 저장되지 않았습니다.");
+            }
+            else{
+                mean.value = savedMean;
+            }
+        }
+        function deleteWord(){
+            localStorage.removeItem(word.value);
+        }
+        function lookAll(){
+            window.open("hw1-view.html");
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>2단계 계산</h2>
+    <form>
+        <input type="text" id="txt1" size="5">
+        +
+        <input type="text" id="txt2" size="5">
+        <input type="button" value="계산" onclick="add2()">
+    </form>
+    <h2>결과 : <span id="sum1">0</span>+<span id="sum2">0</span>=<span id="total">0</span></h2>
+    <script>
+        function add2(){
+            document.getElementById("sum1").innerHTML = parseInt(txt1.value);
+            document.getElementById("sum2").innerHTML = parseInt(txt2.value);
+            document.getElementById("total").innerHTML = parseInt(txt1.value) + parseInt(txt2.value);
+            txt1.value = "";
+            txt2.value = "";
+        }
+    </script>
+</body>
+</html>

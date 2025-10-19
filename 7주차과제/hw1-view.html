@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>나의 단어장 모두 출력</h1>
+    <hr>
+    <span id="view">
+
+    </span>
+    <script>
+        let viewArea = document.getElementById("view");
+        function showAll(){
+            for(let i = 0;i<localStorage.length;i++){
+                let word = localStorage.key(i);
+                let mean = localStorage.getItem(word);
+                document.write(word + " " + mean + "<br>");
+            }
+        }
+        showAll();
+    </script>
+</body>
+</html>

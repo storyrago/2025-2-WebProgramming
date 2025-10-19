@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키 이벤트 응용</title>
+    <style>
+        td{
+            width: 50px;
+            height: 50px;
+            border: 1px solid orchid;
+        }
+    </style>
+</head>
+<body>
+    <h3>3x3 키로 셀 이동하기</h3>
+    <hr>
+    <script>
+        let fRow = 5;
+        let fCol = 5;
+        document.write("<table>");
+        for(let i = 0;i<fRow;i++){
+            document.write("<tr>");
+            for(let j = 0; j < fCol;j++){
+                document.write("<td></td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+        let tds;
+        let prevIndex = 0, index = 0;
+        window.onload = function(){
+            tds = document.getElementsByTagName("td");
+            tds[index].style.backgroundColor = "orchid";
+        }
+        window.onkeydown = function(e){
+            switch(e.key){
+                case "ArrowDown":
+                    if(index / 5 >= 4) return;
+                    index += 5;
+                    break;
+                case "ArrowUp":
+                    if(index / 5 < 1) return;
+                    index -= 5;
+                    break;
+                case "ArrowLeft":
+                    if(index % 5 == 0) return;
+                    index--;
+                    break;
+                case "ArrowRight":
+                    if(index % 5 == 4) return;
+                    index++;
+                    break;
+            }
+            tds[index].style.backgroundColor = "orchid";
+            tds[prevIndex].style.backgroundColor = "white";
+            prevIndex = index;
+        }
+    </script>
+</body>
+</html>

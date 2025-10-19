@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>마우스 휠을 이용한 이미지 확대/축소</h3>
+    <img src="https://png.pngtree.com/element_our/20190601/ourmid/pngtree-cute-cartoon-style-green-tree-vector-transparent-png-image_1327682.jpg" width="280" height="210" onwheel="controlImageSize(event,this)">
+    <script>
+        function controlImageSize(e, img){
+            if(e.wheelDelta > 0){
+                img.width+=10;
+                img.height+=10;
+            }
+            else if(e.wheelDelta < 0){
+                img.width-=10;
+                img.height-=10;
+            }
+        }
+    </script>
+</body>
+</html>

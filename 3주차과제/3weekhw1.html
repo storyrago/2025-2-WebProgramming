@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span id="show">현재시간  <span id="time">00:00:00</span></span><br>
+    <h1><span id="is_working"></span></h1>
+    
+    <script>
+        function dclock(){
+            let dt = new Date();
+            let hour = dt.getHours();
+            let min = dt.getMinutes();
+            let sec = dt.getSeconds();
+            let getisWorkingId = document.getElementById("is_working");
+            let getTimeId = document.getElementById("time");
+            let getShowId = document.getElementById("show");
+            getTimeId.innerHTML = hour + ":" + min + ":" + sec;
+            if(hour >= 9 && hour <21){
+                getisWorkingId.innerHTML = "영업중";
+                getisWorkingId.style.color = "black"; getShowId.style.color = "black";
+                document.body.style.backgroundColor = "white";
+            } else {
+                getisWorkingId.innerHTML = "영업종료";
+                getisWorkingId.style.color = "white"; getShowId.style.color = "white";
+                document.body.style.backgroundColor = "black";
+            }
+        }
+        setInterval(dclock, 1000);
+        
+    </script>
+</body>
+</html>

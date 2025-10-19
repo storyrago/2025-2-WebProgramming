@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>사칙연산</h1>
+    <input id="op1">
+    <input id="op2">
+    <button id="printResult" onclick="send()">Result</button>
+    <hr>
+    <p>-addition : <span id="addition">0</span></p>
+    <p>-substraction : <span id="substraction">0</span></p>
+    <p>-multiplication : <span id="multiplication">0</span></p>
+    <p>-division : <span id="division">0</span></p>
+    <script>
+        let addWorker = new Worker("Calculation.js");
+        function send(){
+            let parameters ={
+                op1: document.getElementById("op1").value,
+                op2 : document.getElementById("op2").value
+            };
+            addWorker.postMessage(parameters);
+        }
+        addWorker.onmessage = function(e){
+            document.getElementById("addition").innerHTML=e.data.sum;
+            document.getElementById("substraction").innerHTML=e.data.sub;
+            document.getElementById("multiplication").innerHTML=e.data.mult;
+            document.getElementById("division").innerHTML=e.data.divi;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DIV 객체를 동적으로 생성, 삽입, 삭제하는 예제</h1>
+    <hr>
+    <p>
+        DOM 트리에 동적으로 객체를 삽입할 수 있습니다. createElement(), appendChild(), removeChild() 메소드를 이용하여 새로운 객체를
+        생성, 삽입, 삭제하는 예제입니다.
+    </p>
+
+    <span onclick="creDiv()">DIV 생성</span>
+    <input type="button" value="모두 삭제" onclick="delDiv()">
+    <span id="view">
+    </span>
+
+    <script>
+        let cnt = 0;
+        function creDiv(){
+            let newDiv = document.createElement("div");
+            newDiv.setAttribute("class","myDiv");
+            newDiv.style.backgroundColor = "yellow";
+            newDiv.innerHTML = "새로 생성된 DIV입니다."
+            newDiv.onclick = function(){
+                cnt++;
+                this.innerHTML = "cnt = " + cnt;
+            };
+            document.getElementById("view").appendChild(newDiv);
+        }
+        function delDiv(){
+            let view = document.getElementById("view");
+            let myDiv = view.getElementsByClassName("myDiv");
+            for(let i = myDiv.length - 1;i >= 0;i--){
+                view.removeChild(myDiv[i]);
+            }
+            cnt = 0;
+        }
+    </script>
+</body>
+</html>

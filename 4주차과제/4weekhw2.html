@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>먹거리 리스트</li>
+        <ol id="food">
+            <li>피자</li>
+            <li>마라탕</li>
+            <li>초밥</li>
+            <li>소고기</li>
+            <li>떡볶이</li>
+        </ol>
+        <li>맛집 리스트</li>
+        <ol id="restaurant">
+            <li>해물집</li>
+            <li>초밥집</li>
+            <li>소고기집</li>
+            <li>피자집</li>
+        </ol>
+    </ul>
+    <hr />
+    <form action="">
+        <input type="button" value=" 먹거리 " onclick="foodList()"/>
+        <input type="button" value=" 맛집 " onclick="restList()"/>
+    </form>
+    <span id="view"></span>
+    
+    <script>
+        function foodList(){
+            let foodId = document.getElementById("food").getElementsByTagName("li");
+            let result = "";
+            for(let i =0;i<foodId.length;i++){
+                result += foodId[i].innerHTML;
+                result += ", ";
+            }
+            document.getElementById("view").innerHTML = result;
+        }
+        function restList(){
+            let restId = document.getElementById("restaurant").getElementsByTagName("li");
+            let result = "";
+            for(let i = 0;i<restId.length;i++){
+                result += (restId[i].innerHTML + ", ");
+            }
+            document.getElementById("view").innerHTML = result;
+        }
+    </script>
+</body>
+</html>

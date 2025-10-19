@@ -1,0 +1,63 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h2>식물 키우기</h2>
+        <button onclick="plant.giveLight(10)">빛 공급</button> : <span id="light">0</span> &nbsp;&nbsp;&nbsp;&nbsp;
+        <button onclick="plant.giveWater(20)">수분 공급</button> : <span id="water">0</span> &nbsp;&nbsp;&nbsp;&nbsp;
+        <h3>성장 크기 : <span id="growth">0</span></h3>
+        <img src="https://img.freepik.com/free-photo/photorealistic-view-tree-nature-with-branches-trunk_23-2151478081.jpg?semt=ais_incoming&w=740&q=80" height="30" id="tree_img">
+        <script>
+            function tree(){
+                this.water = 0;
+                this.light = 0;
+                this.height = 0;
+
+                this.giveWater = function(water){
+                    this.water += water;
+                }
+                this.giveLight = function(light){
+                    this.light += light;
+                }
+                this.growth = function(){
+                    if(this.water > 0 && this.light>0){
+                        this.height += 1;
+                    }
+                    else{
+                        this.height -= 1;
+                    }
+
+                    if(this.water > 0) this.water -= 1;
+                    if(this.light > 0) this.light -= 1;
+                }
+                this.view = function(){
+                    document.getElementById("water").innerHTML = this.water;
+                    document.getElementById("light").innerHTML = this.light;
+                    document.getElementById("growth").innerHTML = this.height;
+                }
+                this.resize = function(){
+                    let imgId = document.getElementById("tree_img");
+                    imgId.style.width = this.height + 50 + "px";
+                    imgId.style.height = this.height + 100+"px";
+                }
+            }   
+            let plant = new tree();
+            function display(){
+                plant.growth();
+                plant.view();
+                plant.resize();
+                if(plant.height < -5){
+                    document.body.innerHTML = "식물이 죽었습니다";
+                    clearInterval(interval);
+                }
+            }
+            let interval = setInterval(display, 1000);
+            
+            
+        </script>
+    </body>
+    </html>

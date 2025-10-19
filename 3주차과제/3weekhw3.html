@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #road{
+            width: 100%;
+            height: 100px;
+            background: #eef6ff;
+            position: relative;
+            overflow: hidden;
+        }
+        #carImg{
+            position : absolute;
+            top: 30px;
+            left: 0px;
+            transition : left 0.1s;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        Oil : <span id="volume">0</span>
+        <input type="button" value="주유" id="oil" onclick="car.fill(50);">
+        <p>
+        <input type="button" value="브레이크" id ="brake" onclick="car.brake(10);">
+        <input type="button" value="엑셀" id="accel" onclick="car.accel(10);">
+        <div id="road">
+            <img src="https://www.esquirekorea.co.kr/resources_old/online/org_online_image/eq/4a2476a5-5064-4c06-8029-356e7ed4c0e1.jpg" id="carImg">
+        </div>
+        <div id="carSpeed">>> STOP</div>
+    </form>
+
+    <script>
+        let car = {
+            speed : 0,
+            oil : 0,
+            x : 0,
+            brake:function(strong){
+                this.speed -= strong;
+            },
+            accel:function(strong){
+                this.speed += strong;
+            },
+            fill:function(oil){
+                this.oil += oil;
+            },
+            drive : function(){
+                if(this.speed > 0 && this.oil > 0){
+                    this.x += this.speed * 0.5;
+                    if(this.x > 1420){
+                        this.x = 0;
+                    }
+                    document.getElementById("carImg").style.left = this.x + "px";
+                    document.getElementById("volume").innerHTML = this.oil;
+                    document.getElementById("carSpeed").innerHTML = ">> speed : " + this.speed;
+                    this.speed -= 2;
+                    this.oil -= 2;
+                }
+                else{
+                    document.getElementById("carSpeed").innerHTML = ">> STOP";
+                    this.speed = 0;
+                }
+            }
+        }
+        function drive(){
+            car.drive();
+        }
+        setInterval(drive, 500);
+    </script>
+</body>
+</html>

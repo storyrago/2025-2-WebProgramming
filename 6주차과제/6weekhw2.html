@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산 문제</title>
+</head>
+<body onload="start()">
+    <h3>계산 문제를 풀어 봅시다.</h3>
+    문제는 자동으로 생성되며, 10초가 지나면 자동 채점됩니다.
+    <div>남은 시간 <span id="clock">10</span></div>
+    <hr>
+    <form>
+        <table>
+            <tr>
+                <td class="question"></td>
+                <td><input class="answer" type="text" size="8"></td>
+            </tr>
+            <tr>
+                <td class="question"></td>
+                <td><input class="answer" type="text" size="8"></td>
+            </tr>
+            <tr>
+                <td class="question"></td>
+                <td><input class="answer" type="text" size="8"></td>
+            </tr>
+            <tr>
+                <td class="question"></td>
+                <td><input class="answer" type="text" size="8"></td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="start()">다시</button></td>
+                <td><span id="score">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        let count = document.getElementById("clock");
+        let time = 10;
+        let trueAns =[];
+        function start(){
+            let questions = document.getElementsByClassName("question");
+            let answers = document.getElementsByClassName("answer");
+            trueAns =[];
+            for(let i = 0;i<questions.length;i++){
+                let op1 = Math.floor(Math.random() * 100);
+                let op2 = Math.floor(Math.random() * 100);
+                questions[i].innerHTML = op1 + "+" + op2;
+                answers[i].value = "";
+                answers[i].setAttribute("data-answer",op1+op2);
+                trueAns[i] = op1 + op2;
+            }
+            time = 10;
+            count.innerHTML = time;
+            document.getElementById("score").innerHTML = "0";
+            clearInterval(timerID);
+            timerID = setInterval(countDown, 1000);
+        }
+        function checkAns(){
+            let answers = document.getElementsByClassName("answer");
+            let score = 0;
+            for(let i = 0; i<answers.length;i++){
+                let correct = answers[i].getAttribute("data-answer");
+                if(answers[i].value == correct){
+                    score++;
+                }
+            }
+            document.getElementById("score").innerHTML = score;
+        }
+
+        function countDown(){
+            time--;
+            count.innerHTML = time;
+            if(time <= 0){
+                clearInterval(timerID);
+                checkAns();
+            }     
+        }
+        let timerID = setInterval(countDown,1000);
+    </script>
+</body>
+</html>
